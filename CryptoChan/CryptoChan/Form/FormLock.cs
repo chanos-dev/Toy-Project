@@ -64,8 +64,20 @@ namespace CryptChan
         }
 
         private void button_Encrpyt_Click(object sender, EventArgs e)
-        {
+        {  
+            DB db = new DB();
 
+            try
+            {
+                if (db.ConnectionDataBase())
+                {
+                    db.InsertData(label_name.Text); 
+                } 
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
         }
     }
 }

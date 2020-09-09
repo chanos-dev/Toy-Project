@@ -24,5 +24,11 @@ namespace CryptChan
                 return _instance;
             }
         } 
+
+        public bool EncyptPass(string passWord)
+        {
+
+            return true;
+        }
     }
 }

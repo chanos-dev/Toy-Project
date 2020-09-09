@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System; 
 using System.Drawing;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization; 
 using System.Windows.Forms;
 
 namespace CryptChan
 {
     public partial class FormCrypto : Form
-    {
+    {  
         enum ButtonType
         {
             DashBoard,
@@ -30,20 +23,18 @@ namespace CryptChan
         FormDashBoard formDashBoard = new FormDashBoard();
         FormLock formLock = new FormLock();
         FormCalendar formCalendar = new FormCalendar();
-        FormSetting formSetting = new FormSetting();
-
-        DB db;
+        FormSetting formSetting = new FormSetting(); 
 
         public FormCrypto()
         {
             InitializeComponent();
             InitializeControl();
-            InitializeDataBase();
+            InitializeDataBase(); 
         }
 
         private void InitializeDataBase()
-        { 
-            db = new DB();
+        {
+            DB db = new DB();
 
             if (db.ConnectionDataBase())
             {
