@@ -59,12 +59,14 @@ namespace CryptChan
             openFileDialog.ShowDialog();
 
             label_name.Text = Path.GetFileName(openFileDialog.FileName);
-            label_name.ForeColor = Color.LightCoral;
-
+            label_name.ForeColor = Color.LightCoral; 
         }
 
         private void button_Encrpyt_Click(object sender, EventArgs e)
-        {  
+        {
+            //PW 암호화
+            //file 암호화 후 PW 삽입
+            //성공 시 sqlite.db에 파일 insert   
             DB db = new DB();
 
             try
