@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.panel_main = new System.Windows.Forms.Panel();
-            this.button_Encrpyt = new System.Windows.Forms.Button();
+            this.button_Crypto = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.userTextBox1 = new CryptChan.UserTextBox();
             this.label_name = new System.Windows.Forms.Label();
             this.button_OpenFileBrowser = new System.Windows.Forms.Button();
             this.label_text2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label_text1 = new System.Windows.Forms.Label();
             this.label_title = new System.Windows.Forms.Label();
-            this.userTextBox1 = new CryptChan.UserTextBox();
             this.panel_main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -45,7 +45,7 @@
             // panel_main
             // 
             this.panel_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(49)))));
-            this.panel_main.Controls.Add(this.button_Encrpyt);
+            this.panel_main.Controls.Add(this.button_Crypto);
             this.panel_main.Controls.Add(this.label1);
             this.panel_main.Controls.Add(this.userTextBox1);
             this.panel_main.Controls.Add(this.label_name);
@@ -62,17 +62,17 @@
             this.panel_main.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel_main_DragEnter);
             this.panel_main.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // button_Encrpyt
+            // button_Crypto
             // 
-            this.button_Encrpyt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Encrpyt.Font = new System.Drawing.Font("Comic Sans MS", 10F);
-            this.button_Encrpyt.Location = new System.Drawing.Point(396, 92);
-            this.button_Encrpyt.Name = "button_Encrpyt";
-            this.button_Encrpyt.Size = new System.Drawing.Size(72, 31);
-            this.button_Encrpyt.TabIndex = 12;
-            this.button_Encrpyt.Text = "Encrpyt";
-            this.button_Encrpyt.UseVisualStyleBackColor = true;
-            this.button_Encrpyt.Click += new System.EventHandler(this.button_Encrpyt_Click);
+            this.button_Crypto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Crypto.Font = new System.Drawing.Font("Comic Sans MS", 10F);
+            this.button_Crypto.Location = new System.Drawing.Point(396, 92);
+            this.button_Crypto.Name = "button_Crypto";
+            this.button_Crypto.Size = new System.Drawing.Size(72, 31);
+            this.button_Crypto.TabIndex = 12;
+            this.button_Crypto.Text = "Crypto";
+            this.button_Crypto.UseVisualStyleBackColor = true;
+            this.button_Crypto.Click += new System.EventHandler(this.button_Encrpyt_Click);
             // 
             // label1
             // 
@@ -86,6 +86,17 @@
             this.label1.Text = "PassWord";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // userTextBox1
+            // 
+            this.userTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.userTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.userTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.userTextBox1.Location = new System.Drawing.Point(187, 91);
+            this.userTextBox1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.userTextBox1.Name = "userTextBox1";
+            this.userTextBox1.Size = new System.Drawing.Size(207, 30);
+            this.userTextBox1.TabIndex = 10;
+            // 
             // label_name
             // 
             this.label_name.Font = new System.Drawing.Font("Comic Sans MS", 11F);
@@ -96,6 +107,7 @@
             this.label_name.TabIndex = 9;
             this.label_name.Text = "(File name)";
             this.label_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_name.TextChanged += new System.EventHandler(this.label_name_TextChanged);
             // 
             // button_OpenFileBrowser
             // 
@@ -152,17 +164,6 @@
             this.label_title.Text = "E n c r y p t i o n";
             this.label_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // userTextBox1
-            // 
-            this.userTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
-            this.userTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.userTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.userTextBox1.Location = new System.Drawing.Point(187, 91);
-            this.userTextBox1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.userTextBox1.Name = "userTextBox1";
-            this.userTextBox1.Size = new System.Drawing.Size(207, 30);
-            this.userTextBox1.TabIndex = 10;
-            // 
             // FormLock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
@@ -192,6 +193,6 @@
         private System.Windows.Forms.Label label_name;
         private UserTextBox userTextBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button_Encrpyt;
+        private System.Windows.Forms.Button button_Crypto;
     }
 }

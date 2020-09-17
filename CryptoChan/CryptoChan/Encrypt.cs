@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -81,6 +82,63 @@ namespace CryptChan
             {
                 return null;
             }
+        }
+
+        //file 
+        //https://msftstack.wordpress.com/2014/12/31/simple-aes-byte-encryption-and-decryption-routines-in-c/
+        public byte[] EncryptFile(byte[] clearBytes, byte[] passBytes, byte[] saltBytes)
+        {
+            byte[] encryptedBytes = null;
+
+            // create a key from the password and salt, use 32K iterations – see note
+            var key = new Rfc2898DeriveBytes(passBytes, saltBytes, 32768);
+
+            // create an AES object
+            using (Aes aes = new AesManaged())
+            {
+                // set the key size to 256 
+                aes.KeySize = 256;
+                aes.Key = key.GetBytes(aes.KeySize / 8);
+                aes.IV = key.GetBytes(aes.BlockSize / 8);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, aes.CreateEncryptor(),CryptoStreamMode.Write))
+                    {
+                        cs.Write(clearBytes, 0, clearBytes.Length);
+                        cs.Close();
+                    }
+                    encryptedBytes = ms.ToArray();
+                }
+            }
+            return encryptedBytes;
+        }
+
+        public byte[] DecryptFile(byte[] cryptBytes, byte[] passBytes, byte[] saltBytes)
+        {
+            byte[] clearBytes = null;
+
+            // create a key from the password and salt, use 32K iterations
+            var key = new Rfc2898DeriveBytes(passBytes, saltBytes, 32768);
+
+            using (Aes aes = new AesManaged())
+            {
+                // set the key size to 256
+                aes.KeySize = 256;
+                aes.Key = key.GetBytes(aes.KeySize / 8);
+                aes.IV = key.GetBytes(aes.BlockSize / 8);
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(cryptBytes, 0, cryptBytes.Length);
+                        cs.Close();
+                    }
+                    clearBytes = ms.ToArray();
+                }
+            }
+
+            return clearBytes;
         }
 
     }
