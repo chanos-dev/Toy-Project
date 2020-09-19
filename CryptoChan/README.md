@@ -6,3 +6,12 @@
 - Icon 사이트 : [Icooon Mono](https://icooon-mono.com/)
 
 - 20-0906 ~ 
+
+---
+
+#### DashBoard
+- 파일 통계를 표시합니다.
+
+![DashBoard](image/DashBoard.JPG)
+
+---
