@@ -37,7 +37,7 @@ namespace CryptChan
             SettingLabel();
 
             timer = new Timer(); 
-            timer.Interval = 3000;
+            timer.Interval = 1000;
             timer.Tick += (sender, e) =>
             {
                 SettingLabel();
@@ -61,7 +61,7 @@ namespace CryptChan
                             } 
                         }
 
-                        Dictionary<string, string> totalFiles = db.GetTotalFiles();
+                        Dictionary<string, int> totalFiles = db.GetTotalFiles();
 
                         if(totalFiles != null)
                         {
@@ -69,13 +69,13 @@ namespace CryptChan
                             int panel_i = 1;
                             int height; 
 
-                            string maxFiles = totalFiles.Values.Max();
+                            int maxFiles = totalFiles.Values.Max();
 
                             string sub_title = string.Empty;
 
                             foreach (var file in totalFiles)
                             {
-                                if (file.Value == "1")
+                                if (file.Value == 1)
                                     sub_title = "file";
                                 else
                                     sub_title = "files";                                
@@ -87,16 +87,9 @@ namespace CryptChan
                                 if (file.Value == maxFiles)
                                     Controls.Find($"label_total{label_i}", true).FirstOrDefault().ForeColor = Color.LightCoral;
                                 else
-                                    Controls.Find($"label_total{label_i}", true).FirstOrDefault().ForeColor = Color.Silver;                                
+                                    Controls.Find($"label_total{label_i}", true).FirstOrDefault().ForeColor = Color.Silver; 
 
-                                if(int.TryParse(file.Value, out height))
-                                {
-                                    height *= 2;
-                                }
-                                else
-                                {
-                                    height = 0;
-                                }
+                                height = file.Value * 2; 
 
                                 Controls.Find($"panel_stick{panel_i}", true).FirstOrDefault().Height = height;
                                 Controls.Find($"panel_stick{panel_i}", true).FirstOrDefault().Top = PANEL_TOP - height;
@@ -133,6 +126,7 @@ namespace CryptChan
             for (label_i = 1; label_i <= 5; label_i++)
             {
                 Controls.Find($"label_total{label_i}", true).FirstOrDefault().Text = "-";
+                Controls.Find($"label_total{label_i}", true).FirstOrDefault().ForeColor = Color.Silver;
             }
 
             for (label_i = 1; label_i <= 5; label_i++)

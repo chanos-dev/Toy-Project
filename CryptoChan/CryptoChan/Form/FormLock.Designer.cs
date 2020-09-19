@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel_main = new System.Windows.Forms.Panel();
+            this.panel_SaveAs = new System.Windows.Forms.Panel();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.button_Crypto = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.userTextBox1 = new CryptChan.UserTextBox();
@@ -38,13 +41,17 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label_text1 = new System.Windows.Forms.Label();
             this.label_title = new System.Windows.Forms.Label();
+            this.timer_panel = new System.Windows.Forms.Timer(this.components);
+            this.button_Cancel = new System.Windows.Forms.Button();
             this.panel_main.SuspendLayout();
+            this.panel_SaveAs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_main
             // 
             this.panel_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(49)))));
+            this.panel_main.Controls.Add(this.panel_SaveAs);
             this.panel_main.Controls.Add(this.button_Crypto);
             this.panel_main.Controls.Add(this.label1);
             this.panel_main.Controls.Add(this.userTextBox1);
@@ -60,7 +67,30 @@
             this.panel_main.TabIndex = 0;
             this.panel_main.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel_main_DragDrop);
             this.panel_main.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel_main_DragEnter);
-            this.panel_main.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel_main.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_main_Paint);
+            // 
+            // panel_SaveAs
+            // 
+            this.panel_SaveAs.BackColor = System.Drawing.Color.Silver;
+            this.panel_SaveAs.Controls.Add(this.button_Cancel);
+            this.panel_SaveAs.Controls.Add(this.buttonSave);
+            this.panel_SaveAs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.panel_SaveAs.Location = new System.Drawing.Point(3, 179);
+            this.panel_SaveAs.Name = "panel_SaveAs";
+            this.panel_SaveAs.Size = new System.Drawing.Size(574, 100);
+            this.panel_SaveAs.TabIndex = 16;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSave.Font = new System.Drawing.Font("Comic Sans MS", 14F);
+            this.buttonSave.Location = new System.Drawing.Point(183, 13);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(209, 77);
+            this.buttonSave.TabIndex = 16;
+            this.buttonSave.Text = "Save As";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.button_Save_Click);
             // 
             // button_Crypto
             // 
@@ -164,6 +194,23 @@
             this.label_title.Text = "E n c r y p t i o n";
             this.label_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // timer_panel
+            // 
+            this.timer_panel.Interval = 1;
+            this.timer_panel.Tick += new System.EventHandler(this.timer_panel_Tick);
+            // 
+            // button_Cancel
+            // 
+            this.button_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Cancel.Font = new System.Drawing.Font("Comic Sans MS", 14F);
+            this.button_Cancel.Location = new System.Drawing.Point(393, 13);
+            this.button_Cancel.Name = "button_Cancel";
+            this.button_Cancel.Size = new System.Drawing.Size(22, 77);
+            this.button_Cancel.TabIndex = 17;
+            this.button_Cancel.Text = "X";
+            this.button_Cancel.UseVisualStyleBackColor = true;
+            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
+            // 
             // FormLock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
@@ -177,6 +224,7 @@
             this.Size = new System.Drawing.Size(617, 464);
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
+            this.panel_SaveAs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -194,5 +242,9 @@
         private UserTextBox userTextBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_Crypto;
+        private System.Windows.Forms.Panel panel_SaveAs;
+        private System.Windows.Forms.Timer timer_panel;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button button_Cancel;
     }
 }

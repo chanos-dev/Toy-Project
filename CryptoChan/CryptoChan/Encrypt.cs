@@ -16,6 +16,11 @@ namespace CryptChan
 
         private static Encrypt _instance;
         
+        public string ext { get; set; }
+        public string encExt => ".chan";
+        public byte[] encryptionFile { get; set; } 
+        public bool isEncrypt { get; set; }
+
         public static Encrypt Instance
         {
             get
@@ -141,5 +146,65 @@ namespace CryptChan
             return clearBytes;
         }
 
+
+        public bool FileEncryption(string filePath, string passWord)
+        {
+            string encPW = EncyptPass(passWord);
+            byte[] keyBytes = Encoding.UTF8.GetBytes(encPW);
+            byte[] saltBytes = SHA512.Create().ComputeHash(keyBytes);
+            byte[] fileBytes = null; 
+
+            try
+            { 
+                if (ext.Contains("chan")) //복호화
+                {
+                    isEncrypt = false;
+                    byte[] exts = null;
+
+                    using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                    { 
+                        fileBytes = new byte[fs.Length]; 
+
+                        fs.Read(fileBytes, 0, Convert.ToInt32(fs.Length));  
+                    }
+
+                    int indexDot = 0; 
+
+                    for(int i=fileBytes.Length-1; i>=0; i--)
+                    {
+                        if (fileBytes[i] == 46)
+                        {
+                            indexDot = i;
+                            break;
+                        } 
+                    }
+
+                    exts = new byte[fileBytes.Length-indexDot];
+                    Array.Copy(fileBytes, indexDot, exts, 0, fileBytes.Length - indexDot);
+                    Array.Resize(ref fileBytes, indexDot);
+
+                    encryptionFile = Encrypt.Instance.DecryptFile(fileBytes, keyBytes, saltBytes);
+                    ext = Encoding.Default.GetString(exts); 
+                }
+                else //암호화
+                {
+                    isEncrypt = true;
+                    using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                    { 
+                        fileBytes = new byte[fs.Length];
+                         
+                        fs.Read(fileBytes, 0, Convert.ToInt32(fs.Length));
+                    }
+
+                    encryptionFile = Encrypt.Instance.EncryptFile(fileBytes, keyBytes, saltBytes); 
+                }
+            }
+            catch
+            {
+                throw new Exception("암호가 맞지 않습니다!");
+            }
+
+            return true;
+        }
     }
 }

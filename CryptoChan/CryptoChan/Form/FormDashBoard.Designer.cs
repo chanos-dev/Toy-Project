@@ -82,6 +82,7 @@
             // 
             // label_task6
             // 
+            this.label_task6.AutoEllipsis = true;
             this.label_task6.Font = new System.Drawing.Font("Comic Sans MS", 11F);
             this.label_task6.ForeColor = System.Drawing.Color.Silver;
             this.label_task6.Location = new System.Drawing.Point(299, 99);
@@ -93,6 +94,7 @@
             // 
             // label_task5
             // 
+            this.label_task5.AutoEllipsis = true;
             this.label_task5.Font = new System.Drawing.Font("Comic Sans MS", 11F);
             this.label_task5.ForeColor = System.Drawing.Color.Silver;
             this.label_task5.Location = new System.Drawing.Point(299, 66);
@@ -104,6 +106,7 @@
             // 
             // label_task4
             // 
+            this.label_task4.AutoEllipsis = true;
             this.label_task4.Font = new System.Drawing.Font("Comic Sans MS", 11F);
             this.label_task4.ForeColor = System.Drawing.Color.Silver;
             this.label_task4.Location = new System.Drawing.Point(299, 35);
@@ -115,6 +118,7 @@
             // 
             // label_task3
             // 
+            this.label_task3.AutoEllipsis = true;
             this.label_task3.Font = new System.Drawing.Font("Comic Sans MS", 11F);
             this.label_task3.ForeColor = System.Drawing.Color.Silver;
             this.label_task3.Location = new System.Drawing.Point(36, 99);
@@ -126,6 +130,7 @@
             // 
             // label_task2
             // 
+            this.label_task2.AutoEllipsis = true;
             this.label_task2.Font = new System.Drawing.Font("Comic Sans MS", 11F);
             this.label_task2.ForeColor = System.Drawing.Color.Silver;
             this.label_task2.Location = new System.Drawing.Point(36, 66);
@@ -137,13 +142,14 @@
             // 
             // label_task1
             // 
+            this.label_task1.AutoEllipsis = true;
             this.label_task1.Font = new System.Drawing.Font("Comic Sans MS", 11F);
             this.label_task1.ForeColor = System.Drawing.Color.Silver;
             this.label_task1.Location = new System.Drawing.Point(36, 35);
             this.label_task1.Name = "label_task1";
             this.label_task1.Size = new System.Drawing.Size(255, 23);
             this.label_task1.TabIndex = 12;
-            this.label_task1.Text = "1. -";
+            this.label_task1.Text = "1. ";
             this.label_task1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label_tasks

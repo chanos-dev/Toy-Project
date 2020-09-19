@@ -186,9 +186,9 @@ namespace CryptChan
             return files;
         } 
 
-        public Dictionary<string, string> GetTotalFiles()
+        public Dictionary<string, int> GetTotalFiles()
         {
-            Dictionary<string, string> totalFiles = new Dictionary<string, string>();
+            Dictionary<string, int> totalFiles = new Dictionary<string, int>();
 
             try
             {
@@ -223,7 +223,7 @@ namespace CryptChan
                     if (dateName[0] == '0')
                         dateName = dateName.Remove(0, 1);
 
-                    totalFiles.Add(dateName, queryReader[1].ToString());
+                    totalFiles.Add(dateName, Convert.ToInt32(queryReader[1]));
                 }
 
                 totalFiles = totalFiles.Reverse().ToDictionary(dict => dict.Key, dict => dict.Value);
