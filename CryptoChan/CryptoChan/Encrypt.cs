@@ -190,7 +190,7 @@ namespace CryptChan
                 {
                     isEncrypt = true;
                     using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
-                    { 
+                    {                         
                         fileBytes = new byte[fs.Length];
                          
                         fs.Read(fileBytes, 0, Convert.ToInt32(fs.Length));
@@ -199,9 +199,9 @@ namespace CryptChan
                     encryptionFile = Encrypt.Instance.EncryptFile(fileBytes, keyBytes, saltBytes); 
                 }
             }
-            catch
+            catch(Exception e)
             {
-                throw new Exception("암호가 맞지 않습니다!");
+                throw e; //new Exception("암호가 맞지 않습니다!");
             }
 
             return true;

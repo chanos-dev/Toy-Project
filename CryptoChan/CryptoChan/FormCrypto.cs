@@ -20,13 +20,13 @@ namespace CryptChan
         Timer dateTimer;
         CultureInfo culture = new CultureInfo("en-US");
 
-        FormDashBoard formDashBoard = new FormDashBoard();
-        FormLock formLock = new FormLock();
-        FormCalendar formCalendar = new FormCalendar();
-        FormSetting formSetting = new FormSetting(); 
+        FormDashBoard formDashBoard;// = new FormDashBoard();
+        FormLock formLock;// = new FormLock();
+        FormCalendar formCalendar;// = new FormCalendar();
+        FormSetting formSetting;// = new FormSetting(); 
 
         public FormCrypto()
-        {
+        {           
             InitializeComponent();
             InitializeControl();
             InitializeDataBase(); 
@@ -47,7 +47,12 @@ namespace CryptChan
         }
 
         private void InitializeControl()
-        { 
+        {
+            formDashBoard = new FormDashBoard();
+            formLock = new FormLock();
+            formCalendar = new FormCalendar();
+            formSetting = new FormSetting(); 
+
             label_Date.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm (ddd)", culture);
             MoveTurnPanel(ButtonType.DashBoard);
 
@@ -58,6 +63,12 @@ namespace CryptChan
                 label_Date.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm (ddd)", culture);
             };
             dateTimer.Start();
+
+            formLock.ShowBallonTip += (title, text) =>
+            {
+                if(!formLock.Visible || !this.Visible)
+                    notifyIcon.ShowBalloonTip(1000, title, text, ToolTipIcon.None);
+            }; 
         }
 
         private void MoveTurnPanel(ButtonType buttonType)
@@ -140,8 +151,8 @@ namespace CryptChan
 
         private void button_Close_Click(object sender, EventArgs e)
         {
-            this.Close();
-            //this.Hide();
+            //this.Close();
+            this.Hide();
         }
 
         private void panel_top_MouseDown(object sender, MouseEventArgs e)
@@ -173,8 +184,10 @@ namespace CryptChan
         }
 
         private void notifyIcon_BalloonTipClicked(object sender, EventArgs e)
-        { 
-
+        {             
+            this.Show();
+            MoveTurnPanel(ButtonType.Lock);
+            ShowSelectForm(ButtonType.Lock); 
         }
 
         private void FormCrypt_Load(object sender, EventArgs e)
@@ -187,7 +200,7 @@ namespace CryptChan
             formDashBoard.Parent = this.panelChild;
             formLock.Parent = this.panelChild;
             formCalendar.Parent = this.panelChild;
-            formSetting.Parent = this.panelChild; 
+            formSetting.Parent = this.panelChild;
 
             ShowSelectForm(ButtonType.DashBoard);
         }

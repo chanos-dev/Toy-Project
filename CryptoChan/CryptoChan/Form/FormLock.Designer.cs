@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.panel_main = new System.Windows.Forms.Panel();
             this.panel_SaveAs = new System.Windows.Forms.Panel();
+            this.button_Cancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.button_Crypto = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,19 +39,21 @@
             this.label_name = new System.Windows.Forms.Label();
             this.button_OpenFileBrowser = new System.Windows.Forms.Button();
             this.label_text2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label_text1 = new System.Windows.Forms.Label();
             this.label_title = new System.Windows.Forms.Label();
             this.timer_panel = new System.Windows.Forms.Timer(this.components);
-            this.button_Cancel = new System.Windows.Forms.Button();
+            this.pictureBox_progress = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_main.SuspendLayout();
             this.panel_SaveAs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_progress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_main
             // 
             this.panel_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(49)))));
+            this.panel_main.Controls.Add(this.pictureBox_progress);
             this.panel_main.Controls.Add(this.panel_SaveAs);
             this.panel_main.Controls.Add(this.button_Crypto);
             this.panel_main.Controls.Add(this.label1);
@@ -79,6 +82,18 @@
             this.panel_SaveAs.Name = "panel_SaveAs";
             this.panel_SaveAs.Size = new System.Drawing.Size(574, 100);
             this.panel_SaveAs.TabIndex = 16;
+            // 
+            // button_Cancel
+            // 
+            this.button_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Cancel.Font = new System.Drawing.Font("Comic Sans MS", 14F);
+            this.button_Cancel.Location = new System.Drawing.Point(393, 13);
+            this.button_Cancel.Name = "button_Cancel";
+            this.button_Cancel.Size = new System.Drawing.Size(22, 77);
+            this.button_Cancel.TabIndex = 17;
+            this.button_Cancel.Text = "X";
+            this.button_Cancel.UseVisualStyleBackColor = true;
+            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // buttonSave
             // 
@@ -162,16 +177,6 @@
             this.label_text2.Text = "or";
             this.label_text2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::CryptChan.Properties.Resources.file;
-            this.pictureBox1.Location = new System.Drawing.Point(241, 149);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 98);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // label_text1
             // 
             this.label_text1.Font = new System.Drawing.Font("Comic Sans MS", 11F);
@@ -199,17 +204,26 @@
             this.timer_panel.Interval = 1;
             this.timer_panel.Tick += new System.EventHandler(this.timer_panel_Tick);
             // 
-            // button_Cancel
+            // pictureBox_progress
             // 
-            this.button_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Cancel.Font = new System.Drawing.Font("Comic Sans MS", 14F);
-            this.button_Cancel.Location = new System.Drawing.Point(393, 13);
-            this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.Size = new System.Drawing.Size(22, 77);
-            this.button_Cancel.TabIndex = 17;
-            this.button_Cancel.Text = "X";
-            this.button_Cancel.UseVisualStyleBackColor = true;
-            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
+            this.pictureBox_progress.Image = global::CryptChan.Properties.Resources.progress;
+            this.pictureBox_progress.Location = new System.Drawing.Point(241, 343);
+            this.pictureBox_progress.Name = "pictureBox_progress";
+            this.pictureBox_progress.Size = new System.Drawing.Size(95, 87);
+            this.pictureBox_progress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_progress.TabIndex = 17;
+            this.pictureBox_progress.TabStop = false;
+            this.pictureBox_progress.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CryptChan.Properties.Resources.file;
+            this.pictureBox1.Location = new System.Drawing.Point(241, 149);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 98);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // FormLock
             // 
@@ -225,6 +239,7 @@
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
             this.panel_SaveAs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_progress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -246,5 +261,6 @@
         private System.Windows.Forms.Timer timer_panel;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button button_Cancel;
+        private System.Windows.Forms.PictureBox pictureBox_progress;
     }
 }

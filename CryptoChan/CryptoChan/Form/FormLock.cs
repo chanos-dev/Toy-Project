@@ -15,11 +15,13 @@ namespace CryptChan
     public partial class FormLock : UserControl
     { 
         const int PANELHEIGHT = 100;
-        const int PANELWIDTH = 574;
+        const int PANELWIDTH = 574;        
 
-        bool isHide = true;
-       
+        bool isHide = true;       
         bool isWidth = false;
+
+        public delegate void EventBallonTip(string title, string text); 
+        public event EventBallonTip ShowBallonTip; 
 
         public FormLock()
         {            
@@ -34,7 +36,7 @@ namespace CryptChan
             if(isWidth)            
                 panel_SaveAs.Width = 0;
             else
-                panel_SaveAs.Height = 0;
+                panel_SaveAs.Height = 0;             
         } 
 
         private void panel_main_DragDrop(object sender, DragEventArgs e)
@@ -69,27 +71,90 @@ namespace CryptChan
             label_name.ForeColor = Color.LightCoral;
         }
 
-        private void button_Encrpyt_Click(object sender, EventArgs e)
+        private async void button_Encrpyt_Click(object sender, EventArgs e)
         { 
             //PW 암호화
             //file 암호화 후 PW 삽입
             //성공 시 sqlite.db에 파일 insert  
             if ((label_name.Text == "(File name)") || string.IsNullOrEmpty(userTextBox1.ToString()))
-                return;
+                return; 
+
+            pictureBox_progress.Visible = true;  
 
             try
             {
-                Encrypt.Instance.ext = Path.GetExtension(label_name.Text);
+                bool isSuccess = true;
 
-                if (Encrypt.Instance.FileEncryption(label_name.Text, userTextBox1.ToString()))
+                Encrypt.Instance.ext = Path.GetExtension(label_name.Text);
+                string ext = Encrypt.Instance.ext;
+
+                await Task.Factory.StartNew(new Action(() =>
+                {                    
+                    try
+                    {                        
+                        Encrypt.Instance.FileEncryption(label_name.Text, userTextBox1.ToString()); 
+                    }
+                    catch (Exception msg)
+                    {
+                        isSuccess = false;
+                        MessageBox.Show(msg.Message);
+                    }
+                }));
+
+                pictureBox_progress.Visible = false;
+
+                if (isSuccess)
                 {
                     timer_panel.Start();
+                    ShowBallonMsg(ext, label_name.Text, "완료");
                 }
+                else
+                {
+                    ShowBallonMsg(ext, label_name.Text, "실패");
+                }
+
+                //BackgroundWorker worker = new BackgroundWorker();
+
+                //worker.DoWork += (ds, de) =>
+                //{
+                //    try
+                //    {
+                //        pictureBox_progress.Visible = true;
+                //        Encrypt.Instance.FileEncryption(label_name.Text, userTextBox1.ToString());
+                //        de.Result = true;
+                //    }
+                //    catch
+                //    {
+                //        de.Result = false;
+                //    }                       
+                //};
+
+                //worker.RunWorkerCompleted += (ds, de) =>
+                //{
+                //    bool isSuccess = (bool)de.Result;
+
+                //    pictureBox_progress.Visible = false;
+
+                //    if (isSuccess)
+                //        timer_panel.Start();
+                //    else
+                //        MessageBox.Show("실패!");
+                //};
+
+                //worker.RunWorkerAsync();
             }
             catch(Exception msg)
             {
                 MessageBox.Show(msg.Message);
             }
+        }
+
+        private void ShowBallonMsg(string ext, string fileName, string done)        
+        {
+            if (ext.Contains("chan"))
+                ShowBallonTip.Invoke("파일 복호화", $"{label_name.Text} 파일 {done}");
+            else
+                ShowBallonTip.Invoke("파일 암호화", $"{label_name.Text} 파일 {done}");
         }
 
         private void label_name_TextChanged(object sender, EventArgs e)
@@ -106,7 +171,7 @@ namespace CryptChan
         {     
             try
             {
-                byte[] fileBytes = Encrypt.Instance.encryptionFile;
+                //byte[] fileBytes = Encrypt.Instance.encryptionFile;
                 string ext = Encrypt.Instance.ext;
                 string encExt = Encrypt.Instance.encExt; 
                 string filter = "";
@@ -140,7 +205,7 @@ namespace CryptChan
                         {
                             byte[] exts = Encoding.UTF8.GetBytes(ext);
 
-                            fss.Write(fileBytes, 0, fileBytes.Length);
+                            fss.Write(Encrypt.Instance.encryptionFile, 0, Encrypt.Instance.encryptionFile.Length);
                             fss.Write(exts, 0, exts.Length);
                         }
                     }
@@ -148,7 +213,7 @@ namespace CryptChan
                     { 
                         using (FileStream fss = new FileStream(filePath, FileMode.Create))
                         {
-                            fss.Write(fileBytes, 0, fileBytes.Length);
+                            fss.Write(Encrypt.Instance.encryptionFile, 0, Encrypt.Instance.encryptionFile.Length);
                         }
                     }
 
@@ -172,11 +237,11 @@ namespace CryptChan
             {
                 MessageBox.Show(ee.Message);
             }
-            //finally
-            //{
-            //    timer_panel.Start();              
-            //}
-        } 
+            finally
+            {
+                Encrypt.Instance.encryptionFile = null;
+            }
+        }
 
         private void timer_panel_Tick(object sender, EventArgs e)
         { 
