@@ -23,7 +23,7 @@ namespace CryptChan
         FormDashBoard formDashBoard;// = new FormDashBoard();
         FormLock formLock;// = new FormLock();
         FormCalendar formCalendar;// = new FormCalendar();
-        FormSetting formSetting;// = new FormSetting(); 
+        FormSetting formSetting;// = new FormSetting();   
 
         public FormCrypto()
         {           
@@ -51,7 +51,7 @@ namespace CryptChan
             formDashBoard = new FormDashBoard();
             formLock = new FormLock();
             formCalendar = new FormCalendar();
-            formSetting = new FormSetting(); 
+            formSetting = new FormSetting();
 
             label_Date.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm (ddd)", culture);
             MoveTurnPanel(ButtonType.DashBoard);
@@ -66,8 +66,12 @@ namespace CryptChan
 
             formLock.ShowBallonTip += (title, text) =>
             {
-                if(!formLock.Visible || !this.Visible)
+                if (!formLock.Visible || !this.Visible)
+                {
                     notifyIcon.ShowBalloonTip(1000, title, text, ToolTipIcon.None);
+                    return true;
+                } 
+                return false;
             }; 
         }
 
@@ -132,15 +136,15 @@ namespace CryptChan
         }
 
         private void button_Lock_Click(object sender, EventArgs e)
-        {
+        {  
             MoveTurnPanel(ButtonType.Lock);
-            ShowSelectForm(ButtonType.Lock);
+            ShowSelectForm(ButtonType.Lock);            
         }
 
         private void button_Calendar_Click(object sender, EventArgs e)
-        {
+        {        
             MoveTurnPanel(ButtonType.Calendar);
-            ShowSelectForm(ButtonType.Calendar);
+            ShowSelectForm(ButtonType.Calendar);  
         }
 
         private void button_Setting_Click(object sender, EventArgs e)
@@ -200,7 +204,7 @@ namespace CryptChan
             formDashBoard.Parent = this.panelChild;
             formLock.Parent = this.panelChild;
             formCalendar.Parent = this.panelChild;
-            formSetting.Parent = this.panelChild;
+            formSetting.Parent = this.panelChild; 
 
             ShowSelectForm(ButtonType.DashBoard);
         }

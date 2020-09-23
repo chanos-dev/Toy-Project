@@ -48,3 +48,5 @@ C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\Cry
 C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptoChan.csproj.CopyComplete
 C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.exe
 C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.pdb
+C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.CustomMessage.resources
+C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.FormMessageBox.resources

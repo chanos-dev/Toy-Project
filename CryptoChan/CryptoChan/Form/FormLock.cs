@@ -20,7 +20,7 @@ namespace CryptChan
         bool isHide = true;       
         bool isWidth = false;
 
-        public delegate void EventBallonTip(string title, string text); 
+        public delegate bool EventBallonTip(string title, string text); 
         public event EventBallonTip ShowBallonTip; 
 
         public FormLock()
@@ -84,6 +84,7 @@ namespace CryptChan
             try
             {
                 bool isSuccess = true;
+                string msg = "";
 
                 Encrypt.Instance.ext = Path.GetExtension(label_name.Text);
                 string ext = Encrypt.Instance.ext;
@@ -94,10 +95,11 @@ namespace CryptChan
                     {                        
                         Encrypt.Instance.FileEncryption(label_name.Text, userTextBox1.ToString()); 
                     }
-                    catch (Exception msg)
+                    catch (Exception exc)
                     {
                         isSuccess = false;
-                        MessageBox.Show(msg.Message);
+
+                        msg = exc.Message; 
                     }
                 }));
 
@@ -110,38 +112,11 @@ namespace CryptChan
                 }
                 else
                 {
-                    ShowBallonMsg(ext, label_name.Text, "실패");
-                }
-
-                //BackgroundWorker worker = new BackgroundWorker();
-
-                //worker.DoWork += (ds, de) =>
-                //{
-                //    try
-                //    {
-                //        pictureBox_progress.Visible = true;
-                //        Encrypt.Instance.FileEncryption(label_name.Text, userTextBox1.ToString());
-                //        de.Result = true;
-                //    }
-                //    catch
-                //    {
-                //        de.Result = false;
-                //    }                       
-                //};
-
-                //worker.RunWorkerCompleted += (ds, de) =>
-                //{
-                //    bool isSuccess = (bool)de.Result;
-
-                //    pictureBox_progress.Visible = false;
-
-                //    if (isSuccess)
-                //        timer_panel.Start();
-                //    else
-                //        MessageBox.Show("실패!");
-                //};
-
-                //worker.RunWorkerAsync();
+                    if(string.IsNullOrEmpty(msg))
+                        ShowBallonMsg(ext, label_name.Text, "실패");
+                    else
+                        ShowBallonMsg(ext, label_name.Text, msg);
+                } 
             }
             catch(Exception msg)
             {
@@ -151,10 +126,24 @@ namespace CryptChan
 
         private void ShowBallonMsg(string ext, string fileName, string done)        
         {
+            bool isSuccess = false;
+
             if (ext.Contains("chan"))
-                ShowBallonTip.Invoke("파일 복호화", $"{label_name.Text} 파일 {done}");
+            {
+                isSuccess = ShowBallonTip.Invoke("파일 복호화", $"{label_name.Text} 파일 {done}"); 
+            }
             else
-                ShowBallonTip.Invoke("파일 암호화", $"{label_name.Text} 파일 {done}");
+            {
+                isSuccess = ShowBallonTip.Invoke("파일 암호화", $"{label_name.Text} 파일 {done}"); 
+            }
+
+            if (!isSuccess)
+            {
+                using (FormMessageBox fm = new FormMessageBox(done))
+                {
+                    fm.ShowDialog();
+                }
+            }
         }
 
         private void label_name_TextChanged(object sender, EventArgs e)

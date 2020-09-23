@@ -86,6 +86,12 @@
   <ItemGroup>
     <Compile Include="DB.cs" />
     <Compile Include="Encrypt.cs" />
+    <Compile Include="FormMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMessageBox.Designer.cs">
+      <DependentUpon>FormMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\FormSetting.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,6 +116,12 @@
     <Compile Include="Form\FormLock.Designer.cs">
       <DependentUpon>FormLock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\CustomMessage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\CustomMessage.Designer.cs">
+      <DependentUpon>CustomMessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\UserTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -124,6 +136,9 @@
     <Compile Include="Form\FormDashBoard.Designer.cs">
       <DependentUpon>FormDashBoard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormMessageBox.resx">
+      <DependentUpon>FormMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormSetting.resx">
       <DependentUpon>FormSetting.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormLock.resx">
       <DependentUpon>FormLock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\CustomMessage.resx">
+      <DependentUpon>CustomMessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\UserTextBox.resx">
       <DependentUpon>UserTextBox.cs</DependentUpon>
@@ -180,6 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="img\Close.png" />
     <None Include="img\show_silver.png" />
     <None Include="img\show_green.png" />
     <None Include="img\progress.gif" />

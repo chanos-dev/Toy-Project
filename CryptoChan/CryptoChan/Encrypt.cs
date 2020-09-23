@@ -183,7 +183,14 @@ namespace CryptChan
                     Array.Copy(fileBytes, indexDot, exts, 0, fileBytes.Length - indexDot);
                     Array.Resize(ref fileBytes, indexDot);
 
-                    encryptionFile = Encrypt.Instance.DecryptFile(fileBytes, keyBytes, saltBytes);
+                    try
+                    {
+                        encryptionFile = Encrypt.Instance.DecryptFile(fileBytes, keyBytes, saltBytes);
+                    }
+                    catch
+                    {
+                        throw new Exception(Properties.Resources.EncryptPass);
+                    }
                     ext = Encoding.Default.GetString(exts); 
                 }
                 else //암호화
@@ -195,13 +202,13 @@ namespace CryptChan
                          
                         fs.Read(fileBytes, 0, Convert.ToInt32(fs.Length));
                     }
-
+                     
                     encryptionFile = Encrypt.Instance.EncryptFile(fileBytes, keyBytes, saltBytes); 
                 }
             }
             catch(Exception e)
             {
-                throw e; //new Exception("암호가 맞지 않습니다!");
+                throw e;
             }
 
             return true;

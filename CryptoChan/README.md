@@ -22,3 +22,12 @@
 ![Lock](image/Lock.JPG)
 
 ---
+
+#### MessageBox & TrayIcon
+- 메세지 박스 및 화면이 내려가 있거나 Lock 탭이 아닌 경우 알림을 보냅니다.
+
+![MessageBox](image/MessageBox.JPG)
+
+![TrayIcon](image/TrayIcon.JPG)
+
+---
