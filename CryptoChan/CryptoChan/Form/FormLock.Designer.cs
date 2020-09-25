@@ -30,23 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel_main = new System.Windows.Forms.Panel();
+            this.pictureBox_progress = new System.Windows.Forms.PictureBox();
             this.panel_SaveAs = new System.Windows.Forms.Panel();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.button_Crypto = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.userTextBox1 = new CryptChan.UserTextBox();
             this.label_name = new System.Windows.Forms.Label();
             this.button_OpenFileBrowser = new System.Windows.Forms.Button();
             this.label_text2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label_text1 = new System.Windows.Forms.Label();
             this.label_title = new System.Windows.Forms.Label();
             this.timer_panel = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox_progress = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.userTextBox1 = new CryptChan.UserTextBox();
             this.panel_main.SuspendLayout();
-            this.panel_SaveAs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_progress)).BeginInit();
+            this.panel_SaveAs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +71,17 @@
             this.panel_main.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel_main_DragDrop);
             this.panel_main.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel_main_DragEnter);
             this.panel_main.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_main_Paint);
+            // 
+            // pictureBox_progress
+            // 
+            this.pictureBox_progress.Image = global::CryptChan.Properties.Resources.progress;
+            this.pictureBox_progress.Location = new System.Drawing.Point(241, 343);
+            this.pictureBox_progress.Name = "pictureBox_progress";
+            this.pictureBox_progress.Size = new System.Drawing.Size(95, 87);
+            this.pictureBox_progress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_progress.TabIndex = 17;
+            this.pictureBox_progress.TabStop = false;
+            this.pictureBox_progress.Visible = false;
             // 
             // panel_SaveAs
             // 
@@ -111,7 +122,7 @@
             // 
             this.button_Crypto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Crypto.Font = new System.Drawing.Font("Comic Sans MS", 10F);
-            this.button_Crypto.Location = new System.Drawing.Point(396, 92);
+            this.button_Crypto.Location = new System.Drawing.Point(409, 92);
             this.button_Crypto.Name = "button_Crypto";
             this.button_Crypto.Size = new System.Drawing.Size(72, 31);
             this.button_Crypto.TabIndex = 12;
@@ -124,23 +135,12 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 10F);
             this.label1.ForeColor = System.Drawing.Color.Silver;
-            this.label1.Location = new System.Drawing.Point(116, 98);
+            this.label1.Location = new System.Drawing.Point(103, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 19);
             this.label1.TabIndex = 11;
             this.label1.Text = "PassWord";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // userTextBox1
-            // 
-            this.userTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
-            this.userTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.userTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.userTextBox1.Location = new System.Drawing.Point(187, 91);
-            this.userTextBox1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.userTextBox1.Name = "userTextBox1";
-            this.userTextBox1.Size = new System.Drawing.Size(207, 30);
-            this.userTextBox1.TabIndex = 10;
             // 
             // label_name
             // 
@@ -177,6 +177,16 @@
             this.label_text2.Text = "or";
             this.label_text2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CryptChan.Properties.Resources.file;
+            this.pictureBox1.Location = new System.Drawing.Point(241, 149);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 98);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // label_text1
             // 
             this.label_text1.Font = new System.Drawing.Font("Comic Sans MS", 11F);
@@ -204,26 +214,16 @@
             this.timer_panel.Interval = 1;
             this.timer_panel.Tick += new System.EventHandler(this.timer_panel_Tick);
             // 
-            // pictureBox_progress
+            // userTextBox1
             // 
-            this.pictureBox_progress.Image = global::CryptChan.Properties.Resources.progress;
-            this.pictureBox_progress.Location = new System.Drawing.Point(241, 343);
-            this.pictureBox_progress.Name = "pictureBox_progress";
-            this.pictureBox_progress.Size = new System.Drawing.Size(95, 87);
-            this.pictureBox_progress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_progress.TabIndex = 17;
-            this.pictureBox_progress.TabStop = false;
-            this.pictureBox_progress.Visible = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::CryptChan.Properties.Resources.file;
-            this.pictureBox1.Location = new System.Drawing.Point(241, 149);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 98);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.userTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.userTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.userTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.userTextBox1.Location = new System.Drawing.Point(174, 91);
+            this.userTextBox1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.userTextBox1.Name = "userTextBox1";
+            this.userTextBox1.Size = new System.Drawing.Size(231, 30);
+            this.userTextBox1.TabIndex = 10;
             // 
             // FormLock
             // 
@@ -238,8 +238,8 @@
             this.Size = new System.Drawing.Size(617, 464);
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
-            this.panel_SaveAs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_progress)).EndInit();
+            this.panel_SaveAs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

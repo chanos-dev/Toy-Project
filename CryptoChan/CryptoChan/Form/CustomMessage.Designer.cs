@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomMessage));
             this.panel_top = new System.Windows.Forms.Panel();
-            this.label_logo = new System.Windows.Forms.Label();
             this.pictureBox_Close = new System.Windows.Forms.PictureBox();
+            this.label_logo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel_top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Close)).BeginInit();
@@ -48,6 +48,16 @@
             this.panel_top.Size = new System.Drawing.Size(445, 45);
             this.panel_top.TabIndex = 0;
             // 
+            // pictureBox_Close
+            // 
+            this.pictureBox_Close.Image = global::CryptChan.Properties.Resources.Close;
+            this.pictureBox_Close.Location = new System.Drawing.Point(411, 11);
+            this.pictureBox_Close.Name = "pictureBox_Close";
+            this.pictureBox_Close.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_Close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_Close.TabIndex = 4;
+            this.pictureBox_Close.TabStop = false;
+            // 
             // label_logo
             // 
             this.label_logo.AutoSize = true;
@@ -60,16 +70,6 @@
             this.label_logo.Size = new System.Drawing.Size(177, 41);
             this.label_logo.TabIndex = 3;
             this.label_logo.Text = "CryptoChan";
-            // 
-            // pictureBox_Close
-            // 
-            this.pictureBox_Close.Image = global::CryptChan.Properties.Resources.Close;
-            this.pictureBox_Close.Location = new System.Drawing.Point(411, 11);
-            this.pictureBox_Close.Name = "pictureBox_Close";
-            this.pictureBox_Close.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_Close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_Close.TabIndex = 4;
-            this.pictureBox_Close.TabStop = false;
             // 
             // label1
             // 

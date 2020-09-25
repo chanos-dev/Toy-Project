@@ -29,32 +29,33 @@
         private void InitializeComponent()
         {
             this.panel_main = new System.Windows.Forms.Panel();
-            this.textBox_pw = new System.Windows.Forms.TextBox();
+            this.label_IME = new System.Windows.Forms.Label();
             this.pictureBox_show = new System.Windows.Forms.PictureBox();
+            this.textBox_pw = new System.Windows.Forms.TextBox();
             this.panel_main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_show)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_main
             // 
+            this.panel_main.Controls.Add(this.label_IME);
             this.panel_main.Controls.Add(this.pictureBox_show);
             this.panel_main.Controls.Add(this.textBox_pw);
             this.panel_main.Location = new System.Drawing.Point(4, 3);
             this.panel_main.Name = "panel_main";
-            this.panel_main.Size = new System.Drawing.Size(200, 27);
+            this.panel_main.Size = new System.Drawing.Size(225, 27);
             this.panel_main.TabIndex = 0;
             this.panel_main.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_main_Paint);
             // 
-            // textBox_pw
+            // label_IME
             // 
-            this.textBox_pw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
-            this.textBox_pw.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox_pw.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.textBox_pw.Location = new System.Drawing.Point(4, 1);
-            this.textBox_pw.Name = "textBox_pw";
-            this.textBox_pw.PasswordChar = '●';
-            this.textBox_pw.Size = new System.Drawing.Size(170, 23);
-            this.textBox_pw.TabIndex = 0;
+            this.label_IME.Font = new System.Drawing.Font("Comic Sans MS", 8F);
+            this.label_IME.ForeColor = System.Drawing.Color.Silver;
+            this.label_IME.Location = new System.Drawing.Point(198, 6);
+            this.label_IME.Name = "label_IME";
+            this.label_IME.Size = new System.Drawing.Size(26, 16);
+            this.label_IME.TabIndex = 2;
+            this.label_IME.Text = "Cap";
             // 
             // pictureBox_show
             // 
@@ -68,6 +69,18 @@
             this.pictureBox_show.Tag = "No";
             this.pictureBox_show.Click += new System.EventHandler(this.pictureBox_show_Click);
             // 
+            // textBox_pw
+            // 
+            this.textBox_pw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.textBox_pw.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_pw.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.textBox_pw.Location = new System.Drawing.Point(4, 1);
+            this.textBox_pw.Name = "textBox_pw";
+            this.textBox_pw.PasswordChar = '●';
+            this.textBox_pw.Size = new System.Drawing.Size(170, 23);
+            this.textBox_pw.TabIndex = 0;
+            this.textBox_pw.TextChanged += new System.EventHandler(this.textBox_pw_TextChanged);
+            // 
             // UserTextBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
@@ -78,7 +91,7 @@
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "UserTextBox";
-            this.Size = new System.Drawing.Size(207, 30);
+            this.Size = new System.Drawing.Size(225, 30);
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_show)).EndInit();
@@ -91,5 +104,6 @@
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.TextBox textBox_pw;
         private System.Windows.Forms.PictureBox pictureBox_show;
+        private System.Windows.Forms.Label label_IME;
     }
 }

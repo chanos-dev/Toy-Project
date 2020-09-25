@@ -7,11 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace CryptChan
 {
     public partial class UserTextBox : UserControl
     {
+        [DllImport("imm32.dll")]
+        private static extern IntPtr ImmGetContext(IntPtr hwnd);
+        [DllImport("imm32.dll")]
+        private static extern bool ImmGetConversionStatus(IntPtr himc, ref int lpdw, ref int lpdw2);
+        
+
         public UserTextBox()
         {
             InitializeComponent();
@@ -21,6 +28,8 @@ namespace CryptChan
         private void InitializeControl()
         {
             pictureBox_show.Tag = "No";
+
+            GetCapsLock();
         }
 
         private void panel_main_Paint(object sender, PaintEventArgs e)
@@ -54,5 +63,39 @@ namespace CryptChan
                 }
             }            
         }
+
+        private void textBox_pw_TextChanged(object sender, EventArgs e)
+        {
+            if (GetCapsLock())
+                label_IME.ForeColor = Color.FromArgb(62, 120, 138);
+            else
+                label_IME.ForeColor = Color.Silver; 
+        } 
+
+        private bool GetCapsLock()
+        {
+            return Control.IsKeyLocked(Keys.CapsLock);
+        }
+
+        private void GetIMEMode(object sender)
+        {
+            TextBox textBox = sender as TextBox;
+
+            if (textBox is null)
+                return;
+
+            IntPtr hIMC;
+            int conversion = 0;
+            int sentence = 0;
+            bool isCheck; 
+
+            hIMC = ImmGetContext(textBox.Handle);
+            isCheck = ImmGetConversionStatus(hIMC, ref conversion, ref sentence); 
+
+            if(conversion ==0)
+                label_IME.Text = "A";
+            else
+                label_IME.Text = "가"; 
+        }   
     }
 }
