@@ -177,21 +177,37 @@ namespace CryptChan
             this.Close();
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ShowForm(ButtonType buttonType)
         {
             this.Show();
+
+            switch(buttonType)
+            {
+                case ButtonType.DashBoard:
+                default:
+                    MoveTurnPanel(ButtonType.DashBoard);
+                    ShowSelectForm(ButtonType.DashBoard);
+                    break;
+                case ButtonType.Lock:
+                    MoveTurnPanel(ButtonType.Lock);
+                    ShowSelectForm(ButtonType.Lock);
+                    break; 
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(ButtonType.DashBoard);
         }
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this.Show();
+            ShowForm(ButtonType.DashBoard);
         }
 
         private void notifyIcon_BalloonTipClicked(object sender, EventArgs e)
-        {             
-            this.Show();
-            MoveTurnPanel(ButtonType.Lock);
-            ShowSelectForm(ButtonType.Lock); 
+        {
+            ShowForm(ButtonType.Lock);
         }
 
         private void FormCrypt_Load(object sender, EventArgs e)
@@ -207,6 +223,11 @@ namespace CryptChan
             formSetting.Parent = this.panelChild; 
 
             ShowSelectForm(ButtonType.DashBoard);
+        }
+
+        private void EncryptionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(ButtonType.Lock);
         }
     }
 }
