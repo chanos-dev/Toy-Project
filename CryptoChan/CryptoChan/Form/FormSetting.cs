@@ -26,10 +26,10 @@ namespace CryptChan
         public FormSetting()
         {
             InitializeComponent();
-            Initialize();
+            InitializeControl();
         }
 
-        private void Initialize()
+        private void InitializeControl()
         {
             setting = new Setting();
             setting.Load();
@@ -82,7 +82,28 @@ namespace CryptChan
 
         private void radioButton_pwYes_CheckedChanged(object sender, EventArgs e)
         {
-            SetOption(Options.PW, true);
+            SetOption(Options.PW, true);  
+
+            DB db = new DB();
+
+            try
+            {
+                if (db.ConnectionDataBase())
+                {
+                    if (string.IsNullOrEmpty(db.GetPassWord()))
+                    {
+                        //최초 pw 설정
+                    }
+                }
+                else
+                {
+                    //error
+                }
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
         } 
 
         private void radioButton_pwNo_CheckedChanged(object sender, EventArgs e)
@@ -103,7 +124,7 @@ namespace CryptChan
         private void button_Crypto_Click(object sender, EventArgs e)
         {
             setting.Save();
-        }
+        } 
     }
 
     public class Setting

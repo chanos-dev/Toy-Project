@@ -80,6 +80,7 @@
             // 
             this.label_Message.AutoEllipsis = true;
             this.label_Message.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_Message.ForeColor = System.Drawing.Color.Silver;
             this.label_Message.Location = new System.Drawing.Point(0, 47);
             this.label_Message.Name = "label_Message";
             this.label_Message.Size = new System.Drawing.Size(445, 146);

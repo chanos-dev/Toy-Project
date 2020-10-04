@@ -72,6 +72,7 @@
             // 
             this.button_Crypto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Crypto.Font = new System.Drawing.Font("Comic Sans MS", 10F);
+            this.button_Crypto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.button_Crypto.Location = new System.Drawing.Point(230, 432);
             this.button_Crypto.Name = "button_Crypto";
             this.button_Crypto.Size = new System.Drawing.Size(76, 28);
@@ -97,6 +98,7 @@
             this.groupBox_notify.Controls.Add(this.label_notify);
             this.groupBox_notify.Controls.Add(this.radioButton_notifyNo);
             this.groupBox_notify.Controls.Add(this.radioButton_notifyYes);
+            this.groupBox_notify.ForeColor = System.Drawing.Color.Silver;
             this.groupBox_notify.Location = new System.Drawing.Point(7, 101);
             this.groupBox_notify.Name = "groupBox_notify";
             this.groupBox_notify.Size = new System.Drawing.Size(295, 64);
@@ -148,7 +150,7 @@
             this.groupBox_pw.Name = "groupBox_pw";
             this.groupBox_pw.Size = new System.Drawing.Size(295, 64);
             this.groupBox_pw.TabIndex = 7;
-            this.groupBox_pw.TabStop = false;
+            this.groupBox_pw.TabStop = false; 
             // 
             // label_pw
             // 
@@ -192,9 +194,9 @@
             this.label_default.Font = new System.Drawing.Font("Comic Sans MS", 10F, System.Drawing.FontStyle.Underline);
             this.label_default.Location = new System.Drawing.Point(3, 441);
             this.label_default.Name = "label_default";
-            this.label_default.Size = new System.Drawing.Size(51, 19);
+            this.label_default.Size = new System.Drawing.Size(59, 19);
             this.label_default.TabIndex = 6;
-            this.label_default.Text = "기본값";
+            this.label_default.Text = "Default";
             this.label_default.Click += new System.EventHandler(this.label_default_Click);
             this.label_default.MouseEnter += new System.EventHandler(this.label_default_MouseEnter);
             this.label_default.MouseLeave += new System.EventHandler(this.label_default_MouseLeave);
@@ -209,7 +211,7 @@
             this.ForeColor = System.Drawing.Color.Silver;
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "FormSetting";
-            this.Size = new System.Drawing.Size(617, 464);
+            this.Size = new System.Drawing.Size(617, 464); 
             this.panel_main.ResumeLayout(false);
             this.panel_right.ResumeLayout(false);
             this.panel_Left.ResumeLayout(false);

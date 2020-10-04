@@ -50,7 +50,7 @@ namespace CryptChan
                     {
                         List<string> files = db.GetCurrentFiles();
 
-                        if(files != null)
+                        if(files.Count != 0)
                         { 
                             int label_i = 1;
 
@@ -63,7 +63,7 @@ namespace CryptChan
 
                         Dictionary<string, int> totalFiles = db.GetTotalFiles();
 
-                        if(totalFiles != null)
+                        if(totalFiles.Count != 0)
                         {
                             int label_i = 1;
                             int panel_i = 1;

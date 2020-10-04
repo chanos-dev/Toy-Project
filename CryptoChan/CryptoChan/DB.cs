@@ -60,7 +60,10 @@ namespace CryptChan
                     {
                         //Success
                         ConnectionDataBase(dBPath);
-                        CreateTable();
+
+                        //Table
+                        CreateTableFiles();
+                        CreateTableUser();
                     }
                     else
                     {
@@ -77,7 +80,7 @@ namespace CryptChan
                     //Fail
                 }
             }
-            catch (Exception e)
+            catch //(Exception e)
             {
                 return false;
             }
@@ -104,7 +107,7 @@ namespace CryptChan
             return true;
         } 
 
-        public int CreateTable()
+        public int CreateTableFiles()
         {
             int result;
 
@@ -129,6 +132,30 @@ namespace CryptChan
             return result;
         }
 
+        public int CreateTableUser()
+        {
+            int result;
+
+            try
+            {
+                StringBuilder sbQuery = new StringBuilder();
+
+                sbQuery.Append("create table user ("); 
+                sbQuery.Append(" id varchar(256) Not NULL, ");
+                sbQuery.Append(" pw varchar(256) Not NULL, ");
+                sbQuery.Append(" create_at varchar(8) Not NULL) ");
+
+                SQLiteCommand command = new SQLiteCommand(sbQuery.ToString(), conn);
+                result = command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
         public bool InsertData(string fileName)
         { 
             try
@@ -143,7 +170,7 @@ namespace CryptChan
                 SQLiteCommand command = new SQLiteCommand(sbQuery.ToString(), conn);
                 command.ExecuteNonQuery(); 
             }
-            catch (Exception e)
+            catch //(Exception e)
             { 
                 return false;
             }
@@ -178,7 +205,7 @@ namespace CryptChan
                     files.Add(queryReader[2].ToString());
                 }
             }
-            catch (Exception e)
+            catch //(Exception e)
             {
                 return null;
             }
@@ -228,7 +255,7 @@ namespace CryptChan
 
                 totalFiles = totalFiles.Reverse().ToDictionary(dict => dict.Key, dict => dict.Value);
             }
-            catch (Exception e)
+            catch //(Exception e)
             {
                 return null;
             }
@@ -242,7 +269,7 @@ namespace CryptChan
             {
                 conn.Close();
             }
-            catch (Exception e)
+            catch //(Exception e)
             {
                 return false;
             }
@@ -273,9 +300,40 @@ namespace CryptChan
                     result = int.Parse(queryReader[0].ToString());
                 }
             }
-            catch (Exception e)
+            catch //(Exception e)
             {
                 return -1;
+            }
+
+            return result;
+        }
+
+        public string GetPassWord()
+        {
+            string result = "";
+
+            try
+            {
+                StringBuilder sbQuery = new StringBuilder();
+
+                //select
+                sbQuery.Append("select pw ");
+                //from
+                sbQuery.Append("from user ");
+                //where
+                sbQuery.Append($"where id = \"root\"");
+
+                SQLiteCommand command = new SQLiteCommand(sbQuery.ToString(), conn);
+                SQLiteDataReader queryReader = command.ExecuteReader();
+
+                while (queryReader.Read())
+                {
+                    result = queryReader[0].ToString();
+                }
+            }
+            catch //(Exception e)
+            {
+                return null;
             }
 
             return result;

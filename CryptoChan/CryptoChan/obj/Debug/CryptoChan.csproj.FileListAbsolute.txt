@@ -40,7 +40,6 @@ C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\Cry
 C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.FormCrypto.resources
 C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.FormCalendar.resources
 C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.FormLock.resources
-C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.CustomMessage.resources
 C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.UserTextBox.resources
 C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.Properties.Resources.resources
 C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.FormDashBoard.resources
@@ -50,3 +49,4 @@ C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\Cry
 C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.exe
 C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.pdb
 C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptoChan.csprojAssemblyReference.cache
+C:\Users\Chanos\Desktop\git\Personal-Project\CryptoChan\CryptoChan\obj\Debug\CryptChan.FormLogin.resources
