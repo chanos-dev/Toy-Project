@@ -5,3 +5,5 @@
 1. [CrpytoChan](https://github.com/chanos-dev/CryptoChan)
 
 2. [VirusChan](https://github.com/chanos-dev/VirusChan)
+
+3. [IHChan](https://github.com/chanos-dev/IHChan)
